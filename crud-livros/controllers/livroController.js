@@ -4,10 +4,11 @@ exports.listarTodosLivros = (req, res) => {
 
     Livros.listarTodosLivros((erro, resultado) => {
         if (erro) {
-            return res.status(500).json({ mensagem: "Falha ao Cdastra Livro" })
+            console.error("Erro ao buscar livro no banco de dados: "+ erro);
+            return res.status(500).json({ mensagem: "Falha ao Cdastra Livro"});
         }
         if (resultado.length === 0) {
-            return res.status(404).json({ mensagem: "Nenhum Livro Cadastrado" })
+            return res.status(404).json({ mensagem: "Nenhum Livro Cadastrado" });
         }
         res.json(resultado);
 
@@ -21,10 +22,12 @@ exports.listarLivrosId = (req, res) => {
     Livros.listarLivrosId(idLivro, (erro, resultado) => {
 
         if (erro) {
-            return res.status(500).json({ mensagem: "Falha ao Buscar Livro" })
+            console.error("ERRO AO BUSCAR LIVRO PELO ID" + erro);
+            return res.status(500).json({ mensagem: "Falha ao Buscar Livro" });
         }
         if (resultado.length === 0) {
-            return res.status(404).json({ mensagem: "Livro não encontrado" })
+            console.warn("ALERTA: Nenhum Livro Foi Encontrato");
+            return res.status(404).json({ mensagem: "Livro não encontrado" });
         }
 
         res.json(resultado[0]);
@@ -41,6 +44,7 @@ exports.listarLivrosGenero = (req, res) => {
             return res.status(500).json({ mensagem: "Falha ao buscar livro" });
         }
         if (resultado.length === 0) {
+            console.warn("ALERTA: Nenhum Livro Foi Encontrato");
             return res.status(404).json({ mensagem: "Nenhum Livro Cadastrado" });
         }
 
@@ -53,7 +57,7 @@ exports.adicionarLivros = (req, res) => {
     const { tituloLivro, autorLivro, dataPublicacaoLivro, generoLivro } = req.body;
 
     if (!tituloLivro || !autorLivro || !dataPublicacaoLivro || !generoLivro) {
-        return res.status(400).json({ mensagem: "Falha: Preencha todos os campos" })
+        return res.status(400).json({ mensagem: "Falha: Preencha todos os campos" });
     }
 
     const novoLivro = { tituloLivro, autorLivro, dataPublicacaoLivro, generoLivro };
@@ -77,17 +81,20 @@ exports.editarDadosLivro = (req, res) => {
     const { tituloLivro, autorLivro, dataPublicacaoLivro, generoLivro } = req.body;
 
     if (!tituloLivro || !autorLivro || !dataPublicacaoLivro || !generoLivro) {
-        return res.status(400).json({ mensagem: "Falha: Preencha todos os campos" })
+        console.warn("Campos obrigatórios não foram preenchidos!");
+        return res.status(400).json({ mensagem: "Falha: Preencha todos os campos" });
     }
 
     const livroAtualizado = { tituloLivro, autorLivro, dataPublicacaoLivro, generoLivro };
 
     Livros.editarDadosLivro(idLivro, livroAtualizado, (erro, resultado) => {
         if(erro) {
+            console.error("❌ Erro ao atualizar no banco:", erro);
             return res.status(500).json({mensagem: "Falha ao atualizar Livro" });
         }
 
         if(resultado.affectedRows === 0){
+            console.warn("⚠️ Nenhum livro encontrado com esse ID");
             return res.status(404).json({mensagem: "Livro não encontado" });
         }
 

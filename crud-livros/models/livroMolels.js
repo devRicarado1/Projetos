@@ -8,9 +8,9 @@ exports.listarTodosLivros = (callback) => {
 };
 
 // Função Para Lista Livros pelo Autor
-exports.listarLivrosAutor = (autorLivro, callback) => {
+exports.listarLivrosGenero = (generoLivro, callback) => {
 
-    conexao.query("SELECT * FROM livros WHERE autorLivro = ?", [autorLivro], callback);
+    conexao.query("SELECT * FROM livros WHERE generoLivro = ?", [generoLivro], callback);
 
 };
 
@@ -40,7 +40,7 @@ exports.adicionarLivros = (livro, callback) => {
 // Editar dados do livro
 exports.editarDadosLivro = (idLivro, livro, callback) => {
 
-    const query = ("UPDATE livros SET tituloLivro = ?, autorLivro = ?, dataPublicacaoLivro = ?, generoLivro = ? WHERE idLivro = ?");
+    const query = "UPDATE livros SET tituloLivro = ?, autorLivro = ?, dataPublicacaoLivro = ?, generoLivro = ? WHERE idLivro = ?";
     const valores = [livro.tituloLivro, livro.autorLivro, livro.dataPublicacaoLivro, livro.generoLivro, idLivro];
 
     conexao.query(query, valores, callback);

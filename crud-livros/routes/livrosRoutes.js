@@ -10,18 +10,18 @@ const livroController = require("../controllers/livroController");
 router.get("/", livroController.listarTodosLivros);
 
 // Lista Clientes atraves do ID
-router.get("/:id", livroController.listarLivrosId);
+router.get("/:id/:idLivro", livroController.listarLivrosId);
 
 // Lista Clientes atraves do Genero
-router.get("/:genero", livroController.listarLivrosGenero);
+router.get("/:genero/:generoLivro", livroController.listarLivrosGenero);
 
 // Adiciona Clientes
 router.post("/", livroController.adicionarLivros);
 
 // Atualizar Cliente
-router.put("/:id", livroController.listarLivrosId);
+router.put("/:idLivro", livroController.editarDadosLivro);
 
 // Deletar cliente
-router.delete("/id", livroController.deletarLivro);
+router.delete("/:idLivro", livroController.deletarLivro);
 
 module.exports = router;

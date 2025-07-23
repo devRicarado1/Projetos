@@ -7,12 +7,12 @@ const PORT = 3000;
 // Para aceitar o json
 app.use(express.json());
 
-app.use("/clientes", livrosRoutes);
+app.use("/livros", livrosRoutes);
 
 app.get("/", (req, res) => {
     res.send("API RODANDO COM SUCESSO!");
 });
 
 app.listen(PORT, () => {
-    console.log("API rodando na Porta" + PORT);
+    console.log("API rodando na Porta " + PORT);
 });
