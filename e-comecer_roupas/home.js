@@ -1,9 +1,9 @@
 // Lista de produtos fake
 const produtos = [
-    { nome: "Blusa de Linho", preco: 99.90, img: "https://via.placeholder.com/400x300?text=Blusa+Linho" },
-    { nome: "Calça Pantacourt", preco: 159.90, img: "https://via.placeholder.com/400x300?text=Calca+Pantacourt" },
-    { nome: "Vestido Floral Midi", preco: 139.90, img: "https://via.placeholder.com/400x300?text=Vestido+Midi" },
-    { nome: "Cardigan Tricot", preco: 189.90, img: "https://via.placeholder.com/400x300?text=Cardiga+Tricot" }
+    { nome: "CONJUNTO CROPPED COM MANGA BUFANTE E SHORT SAIA COM BOTÕES FLORAIS", preco: 129.90, img: "https://s.lilianstoreatacado.com.br/product/2025/09/facetune-28-09-2025-01-10-09.jpg" },
+    { nome: "VESTIDO LONGO TOMARA QUE CAIA COM RECORTES E DETALHE METÁLICO", preco: 109.90, img: "https://s.lilianstoreatacado.com.br/product/2025/09/facetune-24-09-2025-22-54-50.jpg" },
+    { nome: "VESTIDO CUT-OUT MIDI COM AMARRAÇÃO FRONTAL", preco: 89.90, img: "https://s.lilianstoreatacado.com.br/product/2025/09/facetune-27-09-2025-23-00-35.jpg" },
+    { nome: "Conjunto Feminino com Regata Aberta nas Costas e Short com Bolsos", preco: 189.90, img: "https://s.lilianstoreatacado.com.br/product/2025/08/facetune-03-08-2025-13-49-15-jpg.jpg" }
 ];
 
 const container = document.getElementById("produtos-container");
