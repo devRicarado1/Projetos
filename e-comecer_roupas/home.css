@@ -1,0 +1,49 @@
+/* Variáveis de cor */
+:root {
+  --primary: #000;
+  --secondary: #f9f9f9;
+  --highlight: #ffc107;
+}
+
+/* Geral */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Carrossel */
+.carousel-item {
+  height: 500px;
+  background-color: #f0f0f0;
+}
+.carousel-item img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+}
+.carousel-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+/* Cards */
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+.card {
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #eee;
+  padding: 30px 0;
+}
