@@ -1,0 +1,34 @@
+/* [produto.css] */
+
+/* Estilo para as bolinhas de cor */
+.cor-swatch {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: all 0.2s ease;
+}
+
+.cor-swatch.active {
+    border: 3px solid #000; /* Borda mais grossa para indicar seleção */
+    transform: scale(1.1);
+}
+
+/* Estilo para a imagem dentro do thumbnail (Bootstrap Carousel Indicators) */
+.thumbnail-img img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Garante que o botão de tamanho selecionado se destaque */
+.btn-outline-dark.active {
+    background-color: #343a40 !important;
+    color: white !important;
+}
+
+/* Ajuste para o input de quantidade */
+#quantidade-produto {
+    border-left: none;
+    border-right: none;
+}

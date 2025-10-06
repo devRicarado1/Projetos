@@ -4,6 +4,7 @@ const produtos = [
     { nome: "VESTIDO LONGO TOMARA QUE CAIA COM RECORTES E DETALHE METÁLICO", preco: 109.90, img: "https://s.lilianstoreatacado.com.br/product/2025/09/facetune-24-09-2025-22-54-50.jpg" },
     { nome: "VESTIDO CUT-OUT MIDI COM AMARRAÇÃO FRONTAL", preco: 89.90, img: "https://s.lilianstoreatacado.com.br/product/2025/09/facetune-27-09-2025-23-00-35.jpg" },
     { nome: "Conjunto Feminino com Regata Aberta nas Costas e Short com Bolsos", preco: 189.90, img: "https://s.lilianstoreatacado.com.br/product/2025/08/facetune-03-08-2025-13-49-15-jpg.jpg" }
+    
 ];
 
 const container = document.getElementById("produtos-container");
