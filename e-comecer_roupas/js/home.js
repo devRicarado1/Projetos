@@ -169,15 +169,15 @@ function renderizarProdutosHome(lista, container) {
     const card = document.createElement("div");
     card.className = "col-xl-3 col-lg-3 col-md-6 mb-4";
     card.innerHTML = `
-            <div class="card h-100">
-              <a href="produto.html?id=${p.id}"><img src="${p.img}" class="card-img-top" alt="${p.nome}"></a>
-              <div class="card-body text-center p-2">
-                <p class="card-text text-muted mb-1 text-truncate">${p.nome}</p>
-                ${precoHtml}
-                <button class="btn btn-sm btn-outline-success mt-1 btn-add">Adicionar</button>
-              </div>
-            </div>
-        `;
+                <div class="card h-100">
+                    <a href="produto.html?id=${p.id}"><img src="${p.img}" class="card-img-top" alt="${p.nome}"></a>
+                    <div class="card-body text-center p-2">
+                        <p class="card-text text-muted mb-1 text-truncate">${p.nome}</p>
+                        ${precoHtml}
+                        <button class="btn btn-sm btn-outline-success mt-1 btn-add" data-id="${p.id}">Adicionar</button> 
+                    </div>
+                </div>
+            `;
     container.appendChild(card);
   });
 }
@@ -190,12 +190,25 @@ function renderizarProdutosHome(lista, container) {
 // Esta lógica precisa ser aplicada APÓS a renderização dos produtos!
 function adicionarEventosCarrinho() {
   document.querySelectorAll(".btn-add").forEach(btn => {
-    btn.addEventListener("click", () => {
-      carrinho++;
-      if (badge) {
-        badge.textContent = carrinho;
+    btn.addEventListener("click", (e) => {
+      // 1. Pega o ID do produto que foi clicado
+      const produtoId = parseInt(e.currentTarget.getAttribute('data-id'));
+
+      // 2. Encontra o objeto completo do produto na lista principal
+      const produtoParaAdicionar = produtosColecao.find(p => p.id === produtoId);
+
+      if (produtoParaAdicionar) {
+        // 3. Chama a função global (de carrinho.js). 
+        // Por padrão, adicionamos 1 unidade. Tamanho é null na Home.
+        adicionarAoCarrinho(produtoParaAdicionar, 1, null);
+
+        // Opcional: abre o painel lateral automaticamente ao adicionar
+        const offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasCarrinho'));
+        offcanvas.show();
+
+      } else {
+        console.error("Produto não encontrado na coleção:", produtoId);
       }
-      alert("Produto adicionado ao carrinho!");
     });
   });
 }

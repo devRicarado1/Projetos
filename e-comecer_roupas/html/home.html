@@ -6,27 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Store | Moda e Atacado</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- CSS customizado -->
     <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3 text-dark" href="#">MODERN STORE</a>
 
             <div class="d-flex order-lg-3">
-                <a class="nav-link text-dark me-3" href="#">Login</a>
-                <a class="btn btn-outline-dark position-relative" href="#">
+                <a class="nav-link text-dark me-3 d-none d-lg-block" href="#">Login</a>
+                
+                <a class="btn btn-outline-dark position-relative" href="#" 
+                   data-bs-toggle="offcanvas"
+                   data-bs-target="#offcanvasCarrinho" 
+                   aria-controls="offcanvasCarrinho">
                     <i class="bi bi-bag"></i>
-                    <span class="badge bg-danger ms-1 position-absolute top-0 start-100 translate-middle">0</span>
+                    <span class="badge bg-danger ms-1 position-absolute top-0 start-100 translate-middle"
+                        id="contador-carrinho-nav">0</span>
                 </a>
             </div>
-
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,15 +39,14 @@
                     <li class="nav-item"><a class="nav-link" href="/html/colecao.html">COLEÇÃO</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">LANÇAMENTOS</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">PROMOÇÕES</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="#">LOGIN</a></li> 
                 </ul>
             </div>
         </div>
-    </nav>
+        </nav>
 
-    <!-- Espaço pra navbar fixa -->
     <div style="height: 70px;"></div>
 
-    <!-- Carrossel -->
     <div id="vitrine-carrossel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -72,7 +73,6 @@
         </button>
     </div>
 
-    <!-- Filtros por tamanho -->
     <section class="secao-padrao text-center pt-5 pb-0">
         <div class="container">
             <h3 class="fw-light mb-4">COMPRE POR TAMANHO</h3>
@@ -87,14 +87,12 @@
         </div>
     </section>
 
-    <!-- Lançamentos -->
     <section class="secao-padrao">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold text-dark">LANÇAMENTOS</h2>
 
             <div class="row" id="produtos-container">
-                <!-- Os cards de produtos serão gerados dinamicamente pelo JS -->
-            </div>
+                </div>
 
             <div class="text-center mt-4">
                 <a href="#" class="btn btn-lg btn-dark fw-bold">VER TODA A COLEÇÃO</a>
@@ -115,7 +113,41 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho" aria-labelledby="offcanvasCarrinhoLabel">
+
+        <div class="offcanvas-header bg-dark text-white">
+            <h5 class="offcanvas-title fw-bold" id="offcanvasCarrinhoLabel">
+                <i class="bi bi-bag me-2"></i> Meu Carrinho (<span id="contador-carrinho-header">0</span>)
+            </h5>
+            <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body d-flex flex-column">
+
+            <div id="lista-itens-carrinho" class="flex-grow-1 overflow-auto">
+                <p id="carrinho-vazio-mensagem" class="text-center text-muted mt-5" style="display: none;">
+                    Seu carrinho está vazio. 🛒
+                </p>
+            </div>
+
+            <div class="mt-3 pt-3 border-top">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="fw-bold mb-0">Subtotal:</h5>
+                    <h5 class="fw-bold mb-0 text-dark" id="subtotal-carrinho">R$ 0,00</h5>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-dark btn-lg fw-bold" id="btn-finalizar-compra" disabled>FINALIZAR
+                        COMPRA</button>
+                    <a href="#" class="text-center small text-muted mt-2 text-decoration-none"
+                        data-bs-dismiss="offcanvas">Continuar Comprando</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <footer>
         <div class="container text-center">
             <p class="mb-1">&copy; 2025 Modern Store. Todos os direitos reservados.</p>
@@ -125,9 +157,9 @@
         </div>
     </footer>
 
-    <!-- Bootstrap e JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/home.js"></script>
+    <script src="/js/carrinho.js"></script>
 </body>
 
 </html>
